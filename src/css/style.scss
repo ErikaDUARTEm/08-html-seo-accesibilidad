@@ -226,7 +226,7 @@ body {
 .description-container {
   @include variables.container(center);
   width: 100%;
-  height: 110vh;
+  height: 98dvh;
   gap: 20px;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -257,13 +257,16 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 461px;
     font-weight: 800;
     position: relative;
     animation-name: mymoveabove;
     animation-duration: 1s;
-    transition: opacity 1s ease-in-out, filter 1s ease-in-out, transform 1s ease-in-out;
-
+    transition: opacity 1s ease-in-out, filter 1s ease-in-out,
+      transform 1s ease-in-out;
+    & .visible {
+      opacity: 1;
+      animation: mymoveabove 1s forwards;
+    }
     &--text-dinamico {
       color: variables.$color-primary;
       font-size: 25px;
@@ -276,17 +279,15 @@ body {
         left: 0;
         right: 0;
         opacity: 0;
-        filter: blur(5px);
+        filter: blur(15px);
         transition: opacity 1s ease-in-out, filter 1s ease-in-out;
         &.show {
           opacity: 1;
           filter: blur(0);
-         
         }
         &.hide {
           opacity: 0;
           filter: blur(5px);
-          
         }
       }
     }
@@ -320,6 +321,121 @@ body {
   }
 }
 
+.container__about-us {
+  background: #161719;
+  width: 100%;
+  height: 98dvh;
+  display: grid;
+  color: variables.$color-background;
+  grid-template-rows: 10% auto;
+  column-gap: 2.3980815348vw;
+  padding: 7.8472222222vw 4.7961630695vw;
+
+  & .container__list {
+    padding: 0 4.7961630695vw;
+    display: grid;
+    grid-column: 1 / 6;
+    grid-row: 1/3;
+
+    & .list__title {
+      display: grid;
+      grid-column: 3 / 5;
+      grid-row: 1 / 2;
+      grid-template-rows: 1fr 1fr;
+      align-items: start;
+      justify-items: left;
+      height: 30%;
+
+      & .title1 {
+        grid-row: 1/2;
+        width: 100%;
+
+        h3 {
+          font-size: 14px;
+          width: 100%;
+        }
+      }
+
+      & .title2 {
+        grid-row: 2/3;
+        color: variables.$color-primary;
+        width: 100%;
+
+        h3 {
+          font-size: 14px;
+          width: 100%;
+        }
+      }
+    }
+
+    & .list__content {
+      grid-column: 2 / 6;
+     
+      grid-row: 2 / 3;
+      ul {
+        list-style-type: none;
+        padding: 0 20px;
+        display: grid;
+        row-gap: 4.2rem;
+
+        li {
+          display: contents;
+        }
+        & .head {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          align-items: start;
+          gap: 0.5rem;
+          span:first-child {
+            grid-column: 1;
+          }
+          span:not(:first-child) {
+            grid-column: 2;
+          }
+          &__number {
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            span {
+              justify-self: center;
+              align-self: center;
+              width: 50%;
+            }
+            :nth-child(2) {
+              font-weight: 800;
+            }
+          }
+          &__titles {
+            font-size: 25px;
+            position: relative;
+            height: 50px;
+            font-weight: 600;
+            & .item-head-line {
+              background-color: #ffffff1a;
+              bottom: 0;
+              height: 0.5px;
+              left: 0;
+              position: absolute;
+              transform-origin: left center;
+              width: 100%;
+              transform: translate(0, 0);
+              rotate: 0;
+              scale: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.container__abous-parte2 {
+  background: variables.$color-secondary;
+  width: 100%;
+  height: 80dvh;
+}
 @keyframes mymove {
   0% {
     left: 0;
@@ -382,12 +498,12 @@ body {
 }
 
 @keyframes mymoveabove {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-}
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

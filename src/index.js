@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => { 
     const slides = document.querySelectorAll('.text-slide'); 
+    const container = document.querySelector('.description-container');
     let currentIndex = 0; 
 
     function showSlide(index) { 
@@ -22,3 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlide(currentIndex);
         setInterval(nextSlide, 2000); 
     });
+
+    window.addEventListener('scroll', () => { 
+        container
+        const rect = container.getBoundingClientRect();
+         if (
+            rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                textContainer.classList.add('visible'); 
+            }  
+            }); 
+     window.dispatchEvent(new Event('scroll'));
