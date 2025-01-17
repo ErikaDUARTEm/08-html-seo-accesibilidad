@@ -66,10 +66,10 @@ body {
       transition: fill 0.3s ease;
 
       .white-fill {
-        fill: white;
+        fill: variables.$color-background;
       }
       .black-fill {
-        fill: black;
+        fill: variables.$color-secondary;
       }
     }
   }
@@ -459,7 +459,7 @@ body {
             height: 50px;
             font-weight: 600;
             & .item-head-line {
-              background-color: #ffffff1a;
+              background-color: variables.$color-accent;
               bottom: 0;
               height: 0.5px;
               left: 0;
@@ -615,20 +615,16 @@ body {
   padding: 12vw 4.7961630695vw 5.9027777778vw;
 
   & .section__head {
+    @include variables.container(space-evenly);
     grid-column: 1 / -1;
     grid-row: 1 / 2;
     row-gap: 2.2rem;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     flex-direction: column;
 
     & .icon-wrapper {
-      align-self: center;
+      @include variables.container(center);
       border-radius: 1.8px;
-      display: flex;
       height: 2.8rem;
-      justify-content: center;
       width: 2.8rem;
       background: variables.$color-secondary;
       color: variables.$color-background;
@@ -696,11 +692,9 @@ body {
       aspect-ratio: auto 2142 / 2141;
 
       img {
+        @include variables.container(center);
         max-width: 100%;
         position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
     }
   }
@@ -752,7 +746,7 @@ body {
       text-decoration: none;
 
       span:first-child {
-        color: #0071e3;
+        color: variables.$color-primary;
         border: 1px solid;
         border-radius: 6.3rem;
         padding: 2.1px 11px 2.6px;
@@ -773,8 +767,7 @@ body {
   & .container-progress__principal {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 12% 1fr 1fr;
-    display: grid;
+    grid-template-rows: repeat(3, 1fr);
     padding: 0 4.7961630695vw;
     column-gap: 2.3980815348vw;
     height: 120%;
