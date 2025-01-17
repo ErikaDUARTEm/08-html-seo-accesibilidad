@@ -60,6 +60,18 @@ body {
     text-decoration: none;
     color: variables.$color-secondary;
     background-color: variables.$color-background-light;
+
+    & .icon {
+      fill: variables.$color-secondary;
+      transition: fill 0.3s ease;
+
+      .white-fill {
+        fill: white;
+      }
+      .black-fill {
+        fill: black;
+      }
+    }
   }
   &__nav {
     @include variables.container(center);
@@ -89,15 +101,20 @@ body {
       font-size: 14px;
       opacity: 1;
       cursor: pointer;
-      transition: opacity 0.3s;
-      &:hover{
+      transition: color 0.3s ease;
+      &:hover {
         opacity: 1;
       }
       &:hover ~ button .menu__link {
-         opacity: 0.5; 
-       }
+        opacity: 0.5;
+      }
+      &.white-text {
+        color: variables.$color-background;
+      }
+      &.black-text {
+        color: variables.$color-text-light;
+      }
     }
-   
   }
 }
 
@@ -235,6 +252,7 @@ body {
   gap: 20px;
   flex-direction: row;
   flex-wrap: nowrap;
+  background: variables.$color-background;
 
   & .description__head {
     display: flex;
@@ -328,20 +346,26 @@ body {
     color: #0071e3;
     font-size: 14px;
   }
-  & .scroll-button{
+  & .scroll__button {
+    display: none;
     background: variables.$color-primary;
     color: variables.$color-secondary;
     border: none;
     width: 56px;
     height: 32px;
     position: fixed;
-    bottom: 20px;
+    top: 50%;
     left: 20px;
     border-radius: 2px;
     cursor: pointer;
     padding: 2px;
     z-index: 1000;
-}
+    transition: opacity 0.5s;
+  }
+  .scroll__button.show {
+    display: block;
+    opacity: 1;
+  }
 }
 
 .container__about-us {
@@ -393,7 +417,6 @@ body {
 
     & .list__content {
       grid-column: 2 / 6;
-     
       grid-row: 2 / 3;
       ul {
         list-style-type: none;
@@ -457,7 +480,128 @@ body {
 .container__abous-parte2 {
   background: variables.$color-secondary;
   width: 100%;
-  height: 80dvh;
+  height: 100dvh;
+  color: variables.$color-background;
+  padding: 5.2083333333vw 0 7.6388888889vw;
+
+  & .container__grilla {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+    padding: 0 4.7961630695vw;
+    height: 100%;
+    column-gap: 2.3980815348vw;
+    position: relative;
+
+    .horizontal-line {
+      position: absolute;
+      top: 50%;
+      grid-column: 1 / 7;
+      height: 1px;
+      background-color: #fff3;
+      transform: translateY(-50%);
+      z-index: 1;
+      width: 1000px;
+      left: calc((100% / 6) * 1);
+    }
+    & .bottom-items {
+      grid-column: 3/6;
+      grid-row: 1/2;
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      grid-auto-rows: 200px;
+      padding: 0;
+      margin: 0;
+
+      & .bottom-item {
+        display: flex;
+        gap: 16px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 10px;
+        flex-direction: column;
+        position: relative;
+
+        &:before {
+          background-color: variables.$color-primary;
+          content: "";
+          height: 1px;
+          width: 0.72rem;
+          position: absolute;
+          top: 0;
+          left: 1;
+        }
+      }
+      & .bottom-item-title {
+        font-size: 12px;
+      }
+      & .bottom-item-copy {
+        font-size: 18px;
+      }
+    }
+    & .bottom-services {
+      display: grid;
+      grid-column: 2 / 6;
+      grid-template-columns: repeat(4, 1fr);
+      padding-top: 4.2rem;
+
+      & .item-head {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+        font-weight: 350;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        grid-column: 1 / 2;
+
+        & .item-head__number {
+          margin-bottom: 0;
+          opacity: 0.5;
+        }
+      }
+      & .bottom-services__items {
+        display: flex;
+        column-gap: 6rem;
+        grid-column: 2 / 5;
+        justify-content: flex-start;
+
+        & .bottom-services__item {
+          display: flex;
+          flex-direction: column;
+          width: 7rem;
+
+          & .bracket-text {
+            align-items: center;
+            color: variables.$color-background;
+            -moz-column-gap: 0.5rem;
+            column-gap: 0.5rem;
+            display: inline-flex;
+            font-size: 1.8rem;
+            font-weight: 350;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            white-space: nowrap;
+
+            &::before {
+              content: "[";
+              color: variables.$color-primary;
+            }
+            &::after {
+              content: "]";
+              color: variables.$color-primary;
+            }
+          }
+          & .item--name {
+            font-size: 12px;
+            margin-top: 2.8rem;
+          }
+        }
+      }
+    }
+  }
 }
 .container__meet {
   background: variables.$color-background;

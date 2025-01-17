@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".text-slide");
-  
+
   let currentIndex = 0;
 
   function showSlide(index) {
@@ -12,46 +12,45 @@ document.addEventListener("DOMContentLoaded", () => {
     slides[index].classList.add("show");
   }
   function nextSlide() {
-    slides[currentIndex].classList.remove("show"); 
+    slides[currentIndex].classList.remove("show");
     slides[currentIndex].classList.add("hide");
-   
+
     setTimeout(() => {
-        
-        currentIndex = (currentIndex + 1) % slides.length; 
-        slides[currentIndex].style.display = "block"; 
-        slides[currentIndex].classList.remove("hide"); 
-        slides[currentIndex].classList.add("show");
-  }, 2000);
-}
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].style.display = "block";
+      slides[currentIndex].classList.remove("hide");
+      slides[currentIndex].classList.add("show");
+    }, 2000);
+  }
   showSlide(currentIndex);
   setInterval(nextSlide, 3000);
 });
 
 window.addEventListener("scroll", () => {
   const scrollButton = document.getElementById("scrollButton");
-  const descriptionContainer = document.querySelector(".description-container");
-  const firstSection = document.querySelector(".home-container");
-  const rect = descriptionContainer.getBoundingClientRect();
-  const firstSectionRect = firstSection.getBoundingClientRect();
-
-  const containerHeight = rect.height;
-  const halfwayPoint = rect.top + containerHeight / 2;
-  const endPoint = rect.bottom;
-
-  if (
-    (halfwayPoint <= window.innerHeight && halfwayPoint >= 0) ||
-    (endPoint <= window.innerHeight && endPoint >= 0)
-  ) {
-    scrollButton.style.display = "block";
+  const sections = document.querySelectorAll(
+    ".description-container, .container__about-us, .container__abous-parte2, .container__meet"
+  );
+  const homeSection = document.querySelector(".home-container");
+  let isAnySectionVisible = false;
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+      isAnySectionVisible = true;
+    }
+  });
+  if (isAnySectionVisible) {
+    scrollButton.classList.add("show");
   } else {
-    scrollButton.style.display = "none";
+    scrollButton.classList.remove("show");
   }
-  if (firstSectionRect.top <= 0 && firstSectionRect.bottom >= 0) {
-    scrollButton.style.display = "none";
+  if (homeSection) {
+    const homeRect = homeSection.getBoundingClientRect();
+    if (homeRect.top <= 0 && homeRect.bottom >= 0) {
+      scrollButton.classList.remove("show");
+    }
   }
 });
-
-window.dispatchEvent(new Event("scroll"));
 
 document.querySelectorAll(".menu__link").forEach((link) => {
   link.addEventListener("mouseover", () => {
@@ -66,3 +65,70 @@ document.querySelectorAll(".menu__link").forEach((link) => {
     });
   });
 });
+
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".header-container");
+  const navLinks = document.querySelectorAll(".menu__link");
+  const logoIcon = document.querySelector(".header-container__logo .icon");
+  const darkSections = document.querySelectorAll(".dark-bg");
+  const lightSections = document.querySelectorAll(".light-bg");
+  const homeSection = document.querySelector(".home-container");
+
+  let isDarkBackgroundSectionVisible = false;
+  let isLightBackgroundSectionVisible = false;
+  
+  darkSections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      isDarkBackgroundSectionVisible = true;
+    }
+  });
+  lightSections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      isLightBackgroundSectionVisible = true;
+    }
+  });
+  if (isDarkBackgroundSectionVisible) {
+    navLinks.forEach((link) => {
+      link.classList.add("white-text");
+      link.classList.remove("black-text");
+    });
+    logoIcon.classList.add("white-fill");
+    logoIcon.classList.remove("black-fill");
+    header.classList.add("black-bg");
+    header.classList.remove("white-bg");
+  } else if (isLightBackgroundSectionVisible) {
+    navLinks.forEach((link) => {
+      link.classList.add("black-text");
+      link.classList.remove("white-text");
+    });
+    logoIcon.classList.add("black-fill");
+    logoIcon.classList.remove("white-fill");
+    header.classList.add("white-bg");
+    header.classList.remove("black-bg");
+  } else {
+    navLinks.forEach((link) => {
+      link.classList.remove("white-text");
+      link.classList.remove("black-text");
+    });
+    logoIcon.classList.remove("white-fill");
+    logoIcon.classList.remove("black-fill");
+    header.classList.remove("black-bg");
+    header.classList.remove("white-bg");
+  }
+  if (homeSection) {
+    const homeRect = homeSection.getBoundingClientRect();
+    if (homeRect.top <= 0 && homeRect.bottom >= 0) {
+      navLinks.forEach((link) => {
+        link.classList.remove("white-text");
+        link.classList.remove("black-text");
+      });
+      logoIcon.classList.remove("white-fill");
+      logoIcon.classList.remove("black-fill");
+      header.classList.remove("black-bg");
+      header.classList.remove("white-bg");
+    }
+  }
+});
+window.dispatchEvent(new Event("scroll"));
