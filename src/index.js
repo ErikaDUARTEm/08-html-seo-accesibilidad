@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("scroll", () => {
   const scrollButton = document.getElementById("scrollButton");
   const sections = document.querySelectorAll(
-    ".description-container, .container__about-us, .container__abous-parte2, .container__meet"
+    ".description-container, .container__about-us, .container__abous-parte2, .container__meet, .container-progress"
   );
   const homeSection = document.querySelector(".home-container");
   let isAnySectionVisible = false;
@@ -73,6 +73,7 @@ window.addEventListener("scroll", () => {
   const darkSections = document.querySelectorAll(".dark-bg");
   const lightSections = document.querySelectorAll(".light-bg");
   const homeSection = document.querySelector(".home-container");
+  
 
   let isDarkBackgroundSectionVisible = false;
   let isLightBackgroundSectionVisible = false;
