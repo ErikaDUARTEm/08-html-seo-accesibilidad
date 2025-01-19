@@ -1103,7 +1103,6 @@ body {
           }
         }
       }
-
     }
     &-news {
       grid-column: 4/6;
@@ -1158,11 +1157,179 @@ body {
     }
   }
 }
-.footer {
+.container-footer {
   width: 100dvw;
   height: 100dvh;
+  padding: 3.4722222222vw 0 2.7777777778vw;
   background: variables.$color-secondary;
+  &__footer {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 3fr);
+    column-gap: 2.3980815348vw;;
+    padding: 0 4.7961630695vw;
+    &__word-mark {
+      color: variables.$color-background;
+    }
+    &__logo {
+      margin-top: 8.3333333333vw;
+      grid-column: 1 / 2;
+      grid-row: 3/4;
+      color: variables.$color-accent;
+
+      svg {
+        width: 50px;
+        height: 55px;
+      }
+    }
+    &__links-group {
+      grid-column: 4/5;
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+      
+      &-label {
+        color: variables.$color-background;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        span {
+          color: variables.$color-background;
+          opacity: 0.5;
+        }
+      }
+      &-list {
+        font-size: 25px;
+        
+
+        &-item {
+          position: relative;
+          a {
+            color: variables.$color-background;
+            text-decoration: none;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            transition: opacity 0.3s;
+            opacity: 1;
+            &:hover {
+              cursor: pointer;
+              opacity: 1;
+            }
+            &:hover .container-footer__footer__links-group-list-item-icon {
+              display: flex;
+            }
+          }
+                  
+          &.white-text {
+            color: variables.$color-background;
+          }
+          &.black-text {
+            color: variables.$color-text-light;
+          }
+          &-icon {
+            border: 1px solid;
+            border-radius: 6.3rem;
+            color: variables.$color-primary;
+            display: none;
+            height: 1.3rem;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: calc(100% + 3.3rem);
+            top: 50%;
+            transform: translate3d(0, -50%, 0);
+            width: 2.2rem;
+          }
+        }
+        &-two{
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 0 15px 0 0;
+
+          &-item {
+            position: relative;
+            a {
+              color: variables.$color-background;
+              text-decoration: none;
+              justify-content: space-between;
+              align-items: center;
+              position: relative;
+              transition: opacity 0.3s;
+              opacity: 1;
+              &:hover {
+                cursor: pointer;
+                opacity: 1;
+              }
+              &:hover .container-footer__footer__links-group-list-item-icon {
+                display: flex;
+              }
+            }
+                    
+            &.white-text {
+              color: variables.$color-background;
+            }
+            &.black-text {
+              color: variables.$color-text-light;
+            }
+            &-icon {
+              border: 1px solid;
+              border-radius: 6.3rem;
+              color: variables.$color-primary;
+              display: none;
+              height: 1.3rem;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              right: calc(100% + 3.3rem);
+              top: 50%;
+              transform: translate3d(0, -50%, 0);
+              width: 2.2rem;
+            }
+          }
+        }
+      }
+      
+    }
+    &__links-group-two{
+      grid-column: 4/6;
+      grid-row: 3;
+      display: flex;
+      
+      align-items: flex-end;
+      &-legal{
+        gap:16px;
+        align-items: flex-end;
+        width: 80%;
+        height: 100%;
+        list-style-type: none;
+       
+        &-list{
+
+          &-item{
+            a{
+              text-decoration: none;
+              color:variables.$color-background;
+              opacity: 0.5;
+              font-size: 1.4rem;
+            }
+          }
+        }
+        &-location{
+          color: variables.$color-background;
+          opacity: 0.5;
+          font-size: 1.4rem;
+        }
+      }
+      
+    }
+  }
+ 
 }
+
 @keyframes mymove {
   0% {
     left: 0;

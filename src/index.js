@@ -132,4 +132,18 @@ window.addEventListener("scroll", () => {
     }
   }
 });
+
+document.querySelectorAll(".container-footer__footer__links-group-list-item").forEach((link) => {
+  link.addEventListener("mouseover", () => {
+    document.querySelectorAll(".container-footer__footer__links-group-list-item").forEach((otherLink) => {
+      otherLink.style.opacity = "0.5";
+    });
+    link.style.opacity = "1";
+  });
+  link.addEventListener("mouseout", () => {
+    document.querySelectorAll(".container-footer__footer__links-group-list-item").forEach((otherLink) => {
+      otherLink.style.opacity = "1";
+    });
+  });
+});
 window.dispatchEvent(new Event("scroll"));
