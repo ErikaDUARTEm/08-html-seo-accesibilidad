@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("scroll", () => {
   const scrollButton = document.getElementById("scrollButton");
   const sections = document.querySelectorAll(
-    ".description-container, .container__about-us, .container__abous-parte2, .container__meet"
+    ".description-container, .container__about-us, .container__abous-parte2, .container__meet, .container-progress"
   );
   const homeSection = document.querySelector(".home-container");
   let isAnySectionVisible = false;
@@ -73,6 +73,7 @@ window.addEventListener("scroll", () => {
   const darkSections = document.querySelectorAll(".dark-bg");
   const lightSections = document.querySelectorAll(".light-bg");
   const homeSection = document.querySelector(".home-container");
+  
 
   let isDarkBackgroundSectionVisible = false;
   let isLightBackgroundSectionVisible = false;
@@ -130,5 +131,19 @@ window.addEventListener("scroll", () => {
       header.classList.remove("white-bg");
     }
   }
+});
+
+document.querySelectorAll(".container-footer__footer__links-group-list-item").forEach((link) => {
+  link.addEventListener("mouseover", () => {
+    document.querySelectorAll(".container-footer__footer__links-group-list-item").forEach((otherLink) => {
+      otherLink.style.opacity = "0.5";
+    });
+    link.style.opacity = "1";
+  });
+  link.addEventListener("mouseout", () => {
+    document.querySelectorAll(".container-footer__footer__links-group-list-item").forEach((otherLink) => {
+      otherLink.style.opacity = "1";
+    });
+  });
 });
 window.dispatchEvent(new Event("scroll"));
