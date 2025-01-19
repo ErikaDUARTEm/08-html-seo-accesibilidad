@@ -1298,15 +1298,16 @@ body {
       grid-column: 4/6;
       grid-row: 3;
       display: flex;
-      
+      justify-content: space-between;
       align-items: flex-end;
       &-legal{
         gap:16px;
+        display: flex;
         align-items: flex-end;
         width: 80%;
         height: 100%;
         list-style-type: none;
-       
+        
         &-list{
 
           &-item{
